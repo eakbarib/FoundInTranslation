@@ -14,31 +14,46 @@
             </div>
             <div class="options">
                 <label>
-                    <input type="radio" name="q1" value="a">
+                    <input type="radio" name="option" value="a">
                     <div class="option-box">
-                        <span>A. <%= data.language_options[0] %></span>
+                        <span id = "0">A. <%= data.language_options[0] %></span>
                     </div>
                 </label>
                 <label>
-                    <input type="radio" name="q1" value="b">
+                    <input type="radio" name="option" value="b">
                     <div class="option-box">
-                        <span>B. <%= data.language_options[1] %></span>
+                        <span id = "1">B. <%= data.language_options[1] %></span>
                     </div>
                 </label>
                 <label>
-                    <input type="radio" name="q1" value="c">
+                    <input type="radio" name="option" value="c">
                     <div class="option-box">
-                        <span>C. <%= data.language_options[2] %></span>
+                        <span id = "2">C. <%= data.language_options[2] %></span>
                     </div>
                 </label>
                 <label>
-                    <input type="radio" name="q1" value="d">
+                    <input type="radio" name="option" value="d">
                     <div class="option-box">
-                        <span>D. <%= data.language_options[3] %></span>
+                        <span id = "3">D. <%= data.language_options[3] %></span>
                     </div>
                 </label>
             </div>
-            <button class="next-btn">Next</button>
+            <button class="next-btn" onclick="<%= data.correct_language %>">Next</button>
+
+            <script>
+                function nextBtn(correct_language) {
+
+                    var selectedOption = document.querySelector('input[name="option"]:checked');
+                    
+                    console.log(correct_language);
+
+                    if (selectedOption && selectedOption.value == correct_language) {
+                        alert("Correct!");
+                    } else {
+                        alert("Incorrect!");
+                    }
+                }
+            </script>
         </div>
     </div>
     <script src="/js/index.js"></script>
