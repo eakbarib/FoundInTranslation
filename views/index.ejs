@@ -38,21 +38,43 @@
                     </div>
                 </label>
             </div>
-            <button class="next-btn" onclick="nextBtn('<%= data.correct_language %>')">Next</button>
+            
+            <button class="next-btn" onclick="checkBtn('<%= data.correct_language %>')">Check</button>
+            <button class="next-btn" onclick="nextBtn()">Next</button>
+
+    
+            <div class="popup popup_cor">
+                <img src="https://static.vecteezy.com/system/resources/previews/010/152/358/original/tick-icon-sign-symbol-design-free-png.png">
+                <h2>Correct!</h2>
+                <button type="button" onclick="closePopup()">OK</button>
+            </div>
+
+            <div class="popup popup_incor">
+                <img src="https://www.freeiconspng.com/thumbs/error-icon/error-icon-4.png">
+                <h2>Incorrect!</h2>
+                <button type="button" onclick="closePopup()">OK</button>
+            </div>
+
+            
 
             <script>
-                function nextBtn(correct_language) {
-
+                function checkBtn(correct_language) {
+                    
                     var selectedOption = document.querySelector('input[name="option"]:checked');
                     console.log(selectedOption)
                     
                     console.log(correct_language);
 
                     if (selectedOption && selectedOption.value == correct_language) {
-                        alert("Correct!");
+                        document.querySelector('.popup_cor').style.display = 'block';
                     } else {
-                        alert("Incorrect!");
+                        document.querySelector('.popup_incor').style.display = 'block';
                     }
+                }
+
+                function closePopup() {
+                    document.querySelector('.popup_cor').style.display = 'none';
+                    document.querySelector('.popup_incor').style.display = 'none';
                 }
             </script>
         </div>
