@@ -5,6 +5,12 @@
     --blue: #2085C5;
 }
 
+body {
+    background-color: var(--navy-blue);
+    font-family: monospace, sans-serif;
+    color: white;
+}
+
 .container {
     max-width: 800px;
     margin: 0 auto;

@@ -1,10 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>OpenAI API Response</title>
+    <title>Quiz Game</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
-  <h1>OpenAI API Response:</h1>
-  <p><%= data %></p>
+    <div class="container">
+        <h1>Quiz Game</h1>
+        <div class="quiz">
+            <div class="question">
+                <h2>Question 1:</h2>
+                <p><%= data.sentence %></p>
+            </div>
+            <div class="options">
+                <label>
+                    <input type="radio" name="q1" value="a">
+                    <div class="option-box">
+                        <span>A. <%= data.language_options[0] %></span>
+                    </div>
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="b">
+                    <div class="option-box">
+                        <span>B. <%= data.language_options[1] %></span>
+                    </div>
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="c">
+                    <div class="option-box">
+                        <span>C. <%= data.language_options[2] %></span>
+                    </div>
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="d">
+                    <div class="option-box">
+                        <span>D. <%= data.language_options[3] %></span>
+                    </div>
+                </label>
+            </div>
+            <button class="next-btn">Next</button>
+        </div>
+    </div>
 </body>
 </html>
