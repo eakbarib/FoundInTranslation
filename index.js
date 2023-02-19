@@ -16,9 +16,11 @@ app.use(express.static(__dirname + '/public'));
 // Set up a route to fetch data from OpenAI API and render the response using EJS
 app.get('/', async (req, res) => {
     try {
-    const question = await Question.getFullQuestion();
+    const questions_raw = await Question.getQuestions();
+    const questions = [];
     // Render the response using EJS
-    res.render('index', { data: {correct_language:question.language,sentence:question.sentence,translate:question.translate,language_options:question.choices} });
+    res.render('index', { data: {questions} });
+    //correct_language:question.language,sentence:question.sentence,translate:question.translate,language_options:question.choices
     } 
     catch (error) {
         console.error(error);
