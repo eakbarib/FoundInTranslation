@@ -14,36 +14,37 @@
             </div>
             <div class="options">
                 <label>
-                    <input type="radio" name="option" value="a">
+                    <input type="radio" name="option" value="<%= data.language_options[0] %>">
                     <div class="option-box">
                         <span id = "0">A. <%= data.language_options[0] %></span>
                     </div>
                 </label>
                 <label>
-                    <input type="radio" name="option" value="b">
+                    <input type="radio" name="option" value="<%= data.language_options[1] %>">
                     <div class="option-box">
                         <span id = "1">B. <%= data.language_options[1] %></span>
                     </div>
                 </label>
                 <label>
-                    <input type="radio" name="option" value="c">
+                    <input type="radio" name="option" value="<%= data.language_options[2] %>">
                     <div class="option-box">
                         <span id = "2">C. <%= data.language_options[2] %></span>
                     </div>
                 </label>
                 <label>
-                    <input type="radio" name="option" value="d">
+                    <input type="radio" name="option" value="<%= data.language_options[3] %>">
                     <div class="option-box">
                         <span id = "3">D. <%= data.language_options[3] %></span>
                     </div>
                 </label>
             </div>
-            <button class="next-btn" onclick="<%= data.correct_language %>">Next</button>
+            <button class="next-btn" onclick="nextBtn('<%= data.correct_language %>')">Next</button>
 
             <script>
                 function nextBtn(correct_language) {
 
                     var selectedOption = document.querySelector('input[name="option"]:checked');
+                    console.log(selectedOption)
                     
                     console.log(correct_language);
 
