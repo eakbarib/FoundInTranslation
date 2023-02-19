@@ -88,3 +88,55 @@ input[type="radio"]:checked + .option-box {
 .next-btn:hover {
     background-color: #3e8e
 }
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    border-radius: 6px;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    display: none;
+}
+
+.popup-content {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    max-width: 500px;
+    text-align: center;
+}
+
+.popup img {
+    margin-bottom: 20px;
+    width: 100px;
+    margin-top: -50px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.popup h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #000000;
+}
+
+.popup button {
+    
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.popup button:hover {
+    background-color: #3e8e41;
+}
