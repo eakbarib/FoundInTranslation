@@ -6,44 +6,41 @@
 </head>
 <body>
     <div class="container">
-        <h1>Quiz Game</h1>
+        <h1>👾Found In Translation👾</h1>
+        <h3>Guess which language this sentence is in 🕵🏻‍♂️</h3>
         <div class="quiz">
             <div class="question">
-                <h2>Question 1:</h2>
-                <p><%= data.sentence %></p>
+                <h2>Question</h2>
+                <p></p>
             </div>
             <div class="options">
                 <label>
-                    <input type="radio" name="option" value="<%= data.language_options[0] %>">
+                    <input type="radio" name="option" value="">
                     <div class="option-box">
-                        <span id = "0">A. <%= data.language_options[0] %></span>
+                    <span id = "0"></span>
                     </div>
                 </label>
                 <label>
-                    <input type="radio" name="option" value="<%= data.language_options[1] %>">
+                    <input type="radio" name="option" value="">
                     <div class="option-box">
-                        <span id = "1">B. <%= data.language_options[1] %></span>
+                    <span id = "1"></span>   
                     </div>
                 </label>
                 <label>
-                    <input type="radio" name="option" value="<%= data.language_options[2] %>">
+                    <input type="radio" name="option" value="">
                     <div class="option-box">
-                        <span id = "2">C. <%= data.language_options[2] %></span>
+                        <span id = "2"></span>
                     </div>
                 </label>
                 <label>
-                    <input type="radio" name="option" value="<%= data.language_options[3] %>">
+                    <input type="radio" name="option" value="">
                     <div class="option-box">
-                        <span id = "3">D. <%= data.language_options[3] %></span>
+                        <span id = "3"></span>
                     </div>
                 </label>
             </div>
-<<<<<<< HEAD
-            <button class="next-btn" onclick="nextBtn('<%=data.correct_language%>')">Next</button>
-=======
-            
-            <button class="next-btn" onclick="checkBtn('<%= data.correct_language %>')">Check</button>
             <button class="next-btn" onclick="nextBtn()">Next</button>
+            <button class="next-btn" onclick="checkBtn()">Check</button>
 
     
             <div class="popup popup_cor">
@@ -57,32 +54,60 @@
                 <h2>Incorrect!</h2>
                 <button type="button" onclick="closePopup()">OK</button>
             </div>
-
-            
->>>>>>> 650e76823b836422e3fd0f55e866d7cd441c7d5e
-
-            <script>
-                function checkBtn(correct_language) {
-                    
-                    var selectedOption = document.querySelector('input[name="option"]:checked');
-                    console.log(selectedOption)
-                    
-                    console.log(correct_language);
-
-                    if (selectedOption && selectedOption.value == correct_language) {
-                        document.querySelector('.popup_cor').style.display = 'block';
-                    } else {
-                        document.querySelector('.popup_incor').style.display = 'block';
-                    }
-                }
-
-                function closePopup() {
-                    document.querySelector('.popup_cor').style.display = 'none';
-                    document.querySelector('.popup_incor').style.display = 'none';
-                }
-            </script>
         </div>
     </div>
     <script src="/js/index.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        var questionNumber = 0;
+
+        var correct_language = 0;
+
+        $('document').ready(()=>{
+            loadQuestion(questionNumber);
+        });
+
+        function loadQuestion(id) {
+            $.get('/q/' + id, function(data) {
+                console.log(data)
+            $('.question h2').text('Question ' + (id + 1));
+            $('.question p').text(data.sentence);
+            $('.options #0').text("A. " + data.choices[0]);
+            $('.options #0').parent().siblings('input').attr("value",data.choices[0]);
+            $('.options #1').text("B. " + data.choices[1]);
+            $('.options #1').parent().siblings('input').attr("value",data.choices[1]);
+            $('.options #2').text("C. " + data.choices[2]);
+            $('.options #2').parent().siblings('input').attr("value",data.choices[2]);
+            $('.options #3').text("D. " + data.choices[3]);
+            $('.options #3').parent().siblings('input').attr("value",data.choices[3]);
+            correct_language = data.language;
+        });
+        }
+
+
+        function checkBtn() {
+            
+            var selectedOption = document.querySelector('input[name="option"]:checked');
+            console.log(selectedOption)
+            
+            console.log(correct_language);
+
+            if (selectedOption && selectedOption.value == correct_language) {
+                document.querySelector('.popup_cor').style.display = 'block';
+            } else {
+                document.querySelector('.popup_incor').style.display = 'block';
+            }
+        }
+
+        function nextBtn() {
+            ++questionNumber;
+            loadQuestion(questionNumber);
+        }
+
+        function closePopup() {
+            document.querySelector('.popup_cor').style.display = 'none';
+            document.querySelector('.popup_incor').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
